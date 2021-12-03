@@ -16,7 +16,7 @@ class Crawler:
     def get_images():
         img_url_list = ['./url']
         # 填写存放模板图片的文件夹名，文件夹放到根目录下
-        path = './tem_lianyu'
+        path = 'tem_qingyu'
         pictures = os.listdir(path)
         for picture in pictures:
             time.sleep(0.1)
@@ -44,15 +44,15 @@ class Crawler:
     @staticmethod
     def save_images(img_urls):
         # 保存到项目下的pictures文件夹下，没有的时候自动创建
-        if not os.path.exists("./pictures"):
-            os.mkdir("./pictures")
+        if not os.path.exists("pictures_qingyu"):
+            os.mkdir("pictures_qingyu")
         # 防止文件覆盖，获取文件夹内总量，确定顺序
-        count = len(os.listdir('./pictures')) + 1
+        count = len(os.listdir('pictures_qingyu')) + 1
         for url in img_urls:
             time.sleep(0.1)
             try:
                 pic_info = requests.get(url, timeout=10)
-                fp = open('.\\pictures\\' + str(count) + '.png','wb')
+                fp = open('.\\pictures_qingyu\\' + str(count) + '.png','wb')
                 fp.write(pic_info.content)
                 fp.close()
                 print("目标图片+1,已有" + str(count) + "张目标图片")
@@ -71,4 +71,6 @@ class Crawler:
 
 if __name__ == '__main__':
     crawler = Crawler()
+    crawler.start()
+    crawler.start()
     crawler.start()

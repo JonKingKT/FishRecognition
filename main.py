@@ -26,6 +26,20 @@ img6=[]
 img7=[]
 img8=[]
 img9=[]
+
+def plot_y_train_hist():
+  fig = plt.figure(figsize=(15,5))
+  ax = fig.add_subplot(1,1,1)
+  hist = ax.hist(Y_train,bins=n_classes)
+  ax.set_title("the frequentcy of each category sign")
+  ax.set_xlabel("bird")
+  ax.set_ylabel("frequency")
+  plt.show()
+  return hist
+
+hist = plot_y_train_hist()
+
+
 def getImage():
     imgs=[]
     for i in tqdm(range(10)):
